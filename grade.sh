@@ -58,6 +58,9 @@ do
        	echo "   - entering $STUDENT_OUT"
 	cd "$STUDENT_OUT"
 
+	echo "   - cleaning"
+	make clean
+
 	echo "   - compiling"
 	make compile
 
