@@ -29,44 +29,57 @@ rm -rf out
 # Create the output directory
 mkdir -p out
 
-
 # Loop trhough each section
-for student in in/*
+for STUDENT in "$IN"/*
 do
-    if [ -d "$student" ] 
+    if [ -d "$STUDENT" ] 
     then
 
-	echo " - Examining $(basename "$student")"
+	STUDENT_NAME=$(basename "$STUDENT")
+	STUDENT_OUT="$OUT"/"$STUDENT_NAME"
 
-	cd "$student"
+	echo " - Examining $STUDENT_NAME > $STUDENT"
+	echo "   - creating $OUT/$STUDENT_NAME directory"
 
-	echo "   - cleaning"
+	mkdir -p "$STUDENT_OUT"
 
-	rm -f *.class
-	rm -f results.txt
-	rm -f errors.txt
+	echo "   - copying needed files into $STUDENT_OUT"
 
 	echo "   - compiling"
 
-	javac *.java 2>> errors.txt
-
 	echo "   - testing"
 
-	echo " " >> results.txt
-	java CreditCardPayOff < ./../../tc1.txt >> results.txt 2>> errors.txt
-	echo " " >> results.txt
-	java CreditCardPayOff < ./../../tc2.txt >> results.txt 2>> errors.txt
-	echo " " >> results.txt
-	java CreditCardPayOff < ./../../tc3.txt >> results.txt 2>> errors.txt
-	echo " " >> results.txt
-	java CreditCardPayOff < ./../../tc4.txt >> results.txt 2>> errors.txt
+	echo "   - finishing"
 
-	echo "   - done"
+	#cd "$student"
 
-	if [ $(stat -c%s "errors.txt") -eq 0 ]
-	then
-	    rm -f errors.txt
-	fi    
+	#echo "   - cleaning"
+
+	#rm -f *.class
+	#rm -f results.txt
+	#rm -f errors.txt
+
+	#echo "   - compiling"
+
+	#javac *.java 2>> errors.txt
+
+	#echo "   - testing"
+
+	#echo " " >> results.txt
+	#java CreditCardPayOff < ./../../tc1.txt >> results.txt 2>> errors.txt
+	#echo " " >> results.txt
+	#java CreditCardPayOff < ./../../tc2.txt >> results.txt 2>> errors.txt
+	#echo " " >> results.txt
+	#java CreditCardPayOff < ./../../tc3.txt >> results.txt 2>> errors.txt
+	#echo " " >> results.txt
+	#java CreditCardPayOff < ./../../tc4.txt >> results.txt 2>> errors.txt
+
+	#echo "   - done"
+
+	#if [ $(stat -c%s "errors.txt") -eq 0 ]
+	#then
+	#    rm -f errors.txt
+	#fi    
 
 	cd ../../
 
