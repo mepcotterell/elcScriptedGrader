@@ -45,11 +45,24 @@ do
 
 	echo "   - copying needed files into $STUDENT_OUT"
 
+	# copy from in to out
+	# copy from payload to out
+	# make sure that Makefile exists
+
 	echo "   - compiling"
+
+	# execute make compile
 
 	echo "   - testing"
 
+	# execute make test
+
 	echo "   - finishing"
+
+	# clean up error file if it's empty
+
+
+
 
 	#cd "$student"
 
