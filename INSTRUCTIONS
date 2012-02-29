@@ -1,0 +1,16 @@
+INSTRUCTIONS
+
+@author  Michael E. Cotterell <mepcotterell@gmail.com>
+@license LICENSE (MIT style license file).
+
+Unzip the assignment file into the 'in' directory such that every subdirectory
+corresponds to a single submission.
+
+Next, place any extra files needed to compile and test the project into the
+'payload' directory. Then modify the Makefile in the 'payload' directory so that
+it can correctly compile and test the project.
+
+See 'Makefile-sample' for an example of how to do this with input/output
+redirection.
+
+Enjoy!
