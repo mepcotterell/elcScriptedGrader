@@ -5,9 +5,33 @@
 # @author  Michael E. Cotterell <mepcotterell@gmail.com>
 # @license LICENSE (MIT style license file).
 
+# Set up some usefult variables
+CWD=$(pwd)
+IN="$CWD"/in
+OUT="$CWD"/out
+PAYLOAD="$CWD"/payload
+
+# Make sure the 'in' directory exists
+if [ ! -d "$IN" ]; then
+    echo "The '$IN' directory doesn't exist!"
+    exit 1
+fi
+
+# Make sure the 'payload' directory exists
+if [ ! -d "$PAYLOAD" ]; then
+    echo "The '$PAYLOAD' directory doesn't exist!"
+    exit 1
+fi
+
+# Clean the grading workspace
+rm -rf out
+
+# Create the output directory
+mkdir -p out
+
 
 # Loop trhough each section
-for student in files/*
+for student in in/*
 do
     if [ -d "$student" ] 
     then
