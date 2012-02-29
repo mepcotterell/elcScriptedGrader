@@ -23,6 +23,8 @@ if [ ! -d "$PAYLOAD" ]; then
     exit 1
 fi
 
+# TODO Make sure the Makefile exists in the 'payload' directory
+
 # Clean the grading workspace
 rm -rf out
 
@@ -30,39 +32,40 @@ rm -rf out
 mkdir -p out
 
 # Loop trhough each section
-for STUDENT in "$IN"/*
+for STUDENT_IN in "$IN"/*
 do
-    if [ -d "$STUDENT" ] 
+    if [ -d "$STUDENT_IN" ] 
     then
 
-	STUDENT_NAME=$(basename "$STUDENT")
+	# Usefule paths
+	STUDENT_NAME=$(basename "$STUDENT_IN")
 	STUDENT_OUT="$OUT"/"$STUDENT_NAME"
 
-	echo " - Examining $STUDENT_NAME > $STUDENT"
-	echo "   - creating $OUT/$STUDENT_NAME directory"
+	# cd into CWD
+	cd "$CWD"
 
+	echo " - Examining $STUDENT_NAME > $STUDENT"
+
+	echo "   - creating $OUT/$STUDENT_NAME directory"
 	mkdir -p "$STUDENT_OUT"
 
 	echo "   - copying needed files into $STUDENT_OUT"
-
 	# copy from in to out
+	cp -r "$STUDENT_IN"/* "$STUDENT_OUT"
 	# copy from payload to out
-	# make sure that Makefile exists
+	cp -r "$PAYLOAD"/* "$STUDENT_OUT"
+
+       	echo "   - entering $STUDENT_OUT"
+	cd "$STUDENT_OUT"
 
 	echo "   - compiling"
-
-	# execute make compile
+	make compile
 
 	echo "   - testing"
-
-	# execute make test
+	make test
 
 	echo "   - finishing"
-
-	# clean up error file if it's empty
-
-
-
+	# TODO clean up error file if it's empty
 
 	#cd "$student"
 
