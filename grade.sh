@@ -68,39 +68,13 @@ do
 	make test
 
 	echo "   - finishing"
-	# TODO clean up error file if it's empty
+	# clean up error file if it's empty
+	if [ $(stat -c%s "errors.txt") -eq 0 ]
+	then
+	    rm -f errors.txt
+	fi    
 
-	#cd "$student"
-
-	#echo "   - cleaning"
-
-	#rm -f *.class
-	#rm -f results.txt
-	#rm -f errors.txt
-
-	#echo "   - compiling"
-
-	#javac *.java 2>> errors.txt
-
-	#echo "   - testing"
-
-	#echo " " >> results.txt
-	#java CreditCardPayOff < ./../../tc1.txt >> results.txt 2>> errors.txt
-	#echo " " >> results.txt
-	#java CreditCardPayOff < ./../../tc2.txt >> results.txt 2>> errors.txt
-	#echo " " >> results.txt
-	#java CreditCardPayOff < ./../../tc3.txt >> results.txt 2>> errors.txt
-	#echo " " >> results.txt
-	#java CreditCardPayOff < ./../../tc4.txt >> results.txt 2>> errors.txt
-
-	#echo "   - done"
-
-	#if [ $(stat -c%s "errors.txt") -eq 0 ]
-	#then
-	#    rm -f errors.txt
-	#fi    
-
-	cd ../../
+	echo "   - done with $STUDENT_NAME"
 
     fi
 done
