@@ -1,0 +1,9 @@
+elcScriptedGrader
+
+@author  Michael E. Cotterell <mepcotterell@gmail.com>
+@license LICENSE (MIT style license file).
+
+This project is designed to help make the grading process for coding projects
+submitted via eLC semi-automated by automating the compilation and testing of
+source files.
+
