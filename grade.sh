@@ -10,6 +10,7 @@ CWD=$(pwd)
 IN="$CWD"/in
 OUT="$CWD"/out
 PAYLOAD="$CWD"/payload
+UTIL="$CWD"/util
 
 # Make sure the 'in' directory exists
 if [ ! -d "$IN" ]; then
@@ -54,6 +55,8 @@ do
 	cp -r "$STUDENT_IN"/* "$STUDENT_OUT"
 	# copy from payload to out
 	cp -r "$PAYLOAD"/* "$STUDENT_OUT"
+	# copt from util to out
+	cp -r "$UTIL"/* "$STUDENT_OUT"
 
        	echo "   - entering $STUDENT_OUT"
 	cd "$STUDENT_OUT"
